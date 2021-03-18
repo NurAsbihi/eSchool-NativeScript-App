@@ -5,7 +5,7 @@
         <ListView for='lesson in lessons' @itemTap='onItemTap'>
             <v-template>
                 <StackLayout>
-                    <Label :text='lesson.image' />
+                    <Image :src='lesson.image' />
                     <Label :text='lesson.name' />
                     <Label :text='lesson.location' />
                     <Label :text="`£${lesson.price}`" />
@@ -27,7 +27,7 @@
         methods:    {
             onItemTap(event)    {
                 this.$emit('addLesson', event.item);
-                alert(event.item.name)
+                // alert(event.item.name)
             },
             
         },
