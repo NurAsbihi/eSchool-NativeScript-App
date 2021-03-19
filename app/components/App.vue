@@ -72,7 +72,6 @@
                 }
             },
             refreshCart (clearCart) {
-                alert("It's working")
                 this.$data.cart = [];
             }
         }
