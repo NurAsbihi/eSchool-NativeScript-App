@@ -11,7 +11,7 @@
             </v-template>
         </ListView>
         <TextField hint="Name" v-model="name" />
-        <TextField hint="Phone" v-model.number="phone" />
+        <TextField hint="Phone" v-model="phone" />
         <Button @tap="checkoutSubmit" text="Checkout" />
     </StackLayout>
 </template>
@@ -21,7 +21,8 @@
         props: ['cart'],
         data() {
             return  {
-                
+                name: "",
+                phone: ""
             }
         },
         methods:    {
@@ -33,6 +34,11 @@
             //     this.$emit('checkoutSubmit', event.item);
             // },
             checkoutSubmit()    {
+                if (this.name == "" || this.phone == "")    {
+                    alert("Please fill in both fields");
+                    return;
+                }
+                else    {
                     // Counts how many times duplicate ID's come up so I can filter them
                     // when putting the objects into MongoDB
                     const mp = new Map(this.cart.map(o => [o._id, {...o, count: 0}]));
@@ -75,6 +81,7 @@
                         this.$emit('clearCart')
                     });
                     alert("Successfully Checked Out!");
+                }
             },
         }       
     }
